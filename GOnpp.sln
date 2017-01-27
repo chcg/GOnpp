@@ -1,18 +1,26 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C++ Express 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GOnpp", "GOnpp\GOnpp.vcxproj", "{F51EF36E-0275-409D-AEDA-BB9B77E7C639}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Unicode Debug|Win32 = Unicode Debug|Win32
+		Unicode Debug|x64 = Unicode Debug|x64
 		Unicode Release|Win32 = Unicode Release|Win32
+		Unicode Release|x64 = Unicode Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F51EF36E-0275-409D-AEDA-BB9B77E7C639}.Unicode Debug|Win32.ActiveCfg = Unicode Debug|Win32
 		{F51EF36E-0275-409D-AEDA-BB9B77E7C639}.Unicode Debug|Win32.Build.0 = Unicode Debug|Win32
+		{F51EF36E-0275-409D-AEDA-BB9B77E7C639}.Unicode Debug|x64.ActiveCfg = Unicode Debug|x64
+		{F51EF36E-0275-409D-AEDA-BB9B77E7C639}.Unicode Debug|x64.Build.0 = Unicode Debug|x64
 		{F51EF36E-0275-409D-AEDA-BB9B77E7C639}.Unicode Release|Win32.ActiveCfg = Unicode Release|Win32
 		{F51EF36E-0275-409D-AEDA-BB9B77E7C639}.Unicode Release|Win32.Build.0 = Unicode Release|Win32
+		{F51EF36E-0275-409D-AEDA-BB9B77E7C639}.Unicode Release|x64.ActiveCfg = Unicode Release|x64
+		{F51EF36E-0275-409D-AEDA-BB9B77E7C639}.Unicode Release|x64.Build.0 = Unicode Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -68,7 +68,7 @@ void FuncsArray<Size>::set(int index, const tstring &name, PFUNCPLUGINCMD func, 
 	}
 
 	// name
-	int len = std::min(sizeof(item._itemName)/sizeof(item._itemName[0])-1, name.length());
+	size_t len = std::min(sizeof(item._itemName)/sizeof(item._itemName[0])-1, name.length());
 	name.copy(item._itemName, len);
 	item._itemName[len] = '\0';
 

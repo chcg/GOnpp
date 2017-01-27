@@ -1,5 +1,4 @@
-//Copyright (C)2014 tike <timflex@gmx.de>,
-//                  Mateusz Czapliñski <czapkofan@gmail.com>
+//this file is part of notepad++
 //Copyright (C)2003 Don HO <donho@altern.org>
 //
 //This program is free software; you can redistribute it and/or
@@ -16,9 +15,7 @@
 //along with this program; if not, write to the Free Software
 //Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-#include <memory>
 #include "PluginDefinition.h"
-#include <shlwapi.h>
 #include "CmdDlg.h"
 #include "AutoCompletion/AutoCompletion.h"
 #include "FuncsArray.h"
@@ -30,9 +27,7 @@ extern NppData nppData;
 extern CmdDlg _cmdDlg;
 extern std::auto_ptr<AutoCompletion> autocompletion;
 
-BOOL APIENTRY DllMain( HANDLE hModule, 
-                       DWORD  reasonForCall, 
-                       LPVOID lpReserved )
+BOOL APIENTRY DllMain(HANDLE hModule, DWORD  reasonForCall, LPVOID /*lpReserved*/)
 {
     switch (reasonForCall)
     {
@@ -103,9 +98,8 @@ extern "C" __declspec(dllexport) void beNotified(SCNotification *notifyCode)
 // Please let me know if you need to access to some messages :
 // http://sourceforge.net/forum/forum.php?forum_id=482781
 //
-extern "C" __declspec(dllexport) LRESULT messageProc(UINT Message, WPARAM wParam, LPARAM lParam)
-{
-/*
+extern "C" __declspec(dllexport) LRESULT messageProc(UINT /*Message*/, WPARAM /*wParam*/, LPARAM /*lParam*/)
+{/*
 	if (Message == WM_MOVE)
 	{
 		::MessageBox(NULL, "move", "", MB_OK);

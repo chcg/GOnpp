@@ -15,14 +15,12 @@
 //along with this program; if not, write to the Free Software
 //Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-#ifndef STATIC_DIALOG_H
-#define STATIC_DIALOG_H
+#pragma once
 
-//#include "resource.h"
 #include "Window.h"
-#include "Notepad_plus_msgs.h"
+#include "..\Notepad_plus_msgs.h"
 
-enum PosAlign{ALIGNPOS_LEFT, ALIGNPOS_RIGHT, ALIGNPOS_TOP, ALIGNPOS_BOTTOM};
+enum class PosAlign { left, right, top, bottom };
 
 struct DLGTEMPLATEEX {
       WORD   dlgVer;
@@ -41,36 +39,31 @@ struct DLGTEMPLATEEX {
 class StaticDialog : public Window
 {
 public :
-	StaticDialog()
-		: Window()
-	{ };
-
-	virtual ~StaticDialog() {
-		if (!isCreated()) {
-			return;
+	StaticDialog() : Window() {};
+	~StaticDialog(){
+		if (isCreated()) {
+			::SetWindowLongPtr(_hSelf, GWLP_USERDATA, (long)NULL);	//Prevent run_dlgProc from doing anything, since its virtual
+			destroy();
 		}
-		::SetWindowLongPtr(_hSelf, GWL_USERDATA, (long)NULL); //Prevent run_dlgProc from doing anything, since its virtual
-		destroy();
 	};
-
 	virtual void create(int dialogID, bool isRTL = false);
 
-	virtual bool isCreated() const {
-		return _hSelf != 0;
+    virtual bool isCreated() const {
+		return (_hSelf != NULL);
 	};
 
-	void destroy() {
+	void goToCenter();
+    void destroy() {
 		::SendMessage(_hParent, NPPM_MODELESSDIALOG, MODELESSDIALOGREMOVE, (WPARAM)_hSelf);
 		::DestroyWindow(_hSelf);
 	};
 
 protected :
 	RECT _rc;
-	static BOOL CALLBACK dlgProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);
+	static INT_PTR CALLBACK dlgProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);
+	virtual INT_PTR CALLBACK run_dlgProc(UINT message, WPARAM wParam, LPARAM lParam) = 0;
 
-	virtual BOOL CALLBACK run_dlgProc(UINT message, WPARAM wParam, LPARAM lParam) = 0;
-
+    void alignWith(HWND handle, HWND handle2Align, PosAlign pos, POINT & point);
 	HGLOBAL makeRTLResource(int dialogID, DLGTEMPLATE **ppMyDlgTemplate);
 };
 
-#endif //STATIC_DIALOG_H
